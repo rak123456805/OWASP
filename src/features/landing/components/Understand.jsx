@@ -35,7 +35,7 @@ export default function understand() {
                 </div>
                 <div>
                     <div className='uimage'>
-                        <img src='public\owasp2025top10.png' alt="" />
+                        <img src='/owasp2025top10.png' alt="" />
                     </div>
 
 
