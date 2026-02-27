@@ -406,13 +406,15 @@ try {
             </div>
           </div>
         </div>
-        <button
-          type="button"
-          className="btn btn-outline-warning"
-          onClick={() => navigate("/security-logging-failures/sandbox")}
-        >
-          Try it Yourself
-        </button>
+        <div className="vp-try-btn-wrapper">
+          <button
+            type="button"
+            className="vp-try-it-btn"
+            onClick={() => navigate("/security-logging-failures/sandbox")}
+          >
+            🚀 Try it Yourself
+          </button>
+        </div>
       </section>
 
       {/* Resources */}

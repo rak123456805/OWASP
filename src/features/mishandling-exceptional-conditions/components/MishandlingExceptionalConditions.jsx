@@ -212,13 +212,15 @@ app.get('/data', (req, res) => {
                     </div>
                 </div>
 
-                <button
-                    type="button"
-                    className="btn btn-outline-warning"
-                    onClick={handleTryItYourself}
-                >
-                    Try it Yourself
-                </button>
+                <div className="vp-try-btn-wrapper">
+                    <button
+                        type="button"
+                        className="vp-try-it-btn"
+                        onClick={handleTryItYourself}
+                    >
+                        🚀 Try it Yourself
+                    </button>
+                </div>
             </section>
 
             {/* Resources */}

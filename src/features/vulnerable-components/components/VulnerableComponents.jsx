@@ -387,13 +387,15 @@ dependencies:
             </div>
           </div>
         </div>
-        <button
-          type="button"
-          className="btn btn-outline-warning"
-          onClick={() => navigate("/vulnerable-components/sandbox")}
-        >
-          Try it Yourself
-        </button>
+        <div className="vp-try-btn-wrapper">
+          <button
+            type="button"
+            className="vp-try-it-btn"
+            onClick={() => navigate("/vulnerable-components/sandbox")}
+          >
+            🚀 Try it Yourself
+          </button>
+        </div>
       </section>
 
       {/* Resources */}

@@ -215,13 +215,15 @@ npm install --ignore-scripts # Prevent lifecycle malware`}</pre>
                     </div>
                 </div>
 
-                <button
-                    type="button"
-                    className="btn btn-outline-warning"
-                    onClick={handleTryItYourself}
-                >
-                    Try it Yourself
-                </button>
+                <div className="vp-try-btn-wrapper">
+                    <button
+                        type="button"
+                        className="vp-try-it-btn"
+                        onClick={handleTryItYourself}
+                    >
+                        🚀 Try it Yourself
+                    </button>
+                </div>
             </section>
 
             {/* Resources */}

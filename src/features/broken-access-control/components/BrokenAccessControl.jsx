@@ -5,7 +5,7 @@ import { useNavigate } from "react-router-dom";
 const BrokenAccessControl = () => {
   const navigate = useNavigate();
   return (
-    
+
     <div className="broken-access-page">
       {/* Hero Section */}
       <section className="bac-hero">
@@ -289,13 +289,15 @@ function deleteUser(userId) {
             </div>
           </div>
         </div>
-        <button
-  type="button"
-  class="btn btn-outline-warning"
-  onClick={() => navigate("/broken-access-control/sandbox")}
->
-  🚀 Try it Yourself
-</button>
+        <div className="vp-try-btn-wrapper">
+          <button
+            type="button"
+            className="vp-try-it-btn"
+            onClick={() => navigate("/broken-access-control/sandbox")}
+          >
+            🚀 Try it Yourself
+          </button>
+        </div>
 
       </section>
 

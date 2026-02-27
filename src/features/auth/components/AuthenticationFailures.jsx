@@ -392,43 +392,13 @@ if (await verify2FACode(user, req.body.totpCode)) {
             </div>
           </div>
 
-          {/* Added Try it Yourself Button from code 1 */}
-          <div
-            style={{
-              display: "flex",
-              justifyContent: "center",
-              alignItems: "center",
-              width: "100%",
-              margin: "1.5rem auto 0 auto",
-              textAlign: "center",
-            }}
-          >
+          {/* Standardized Try it Yourself Button */}
+          <div className="vp-try-btn-wrapper">
             <Link
               to="/sandbox/authentication-failures"
-              style={{
-                display: "inline-block",
-                margin: "0 auto",
-                padding: "10px 18px",
-                border: "2px solid #ffc107",
-                borderRadius: "8px",
-                color: "#ffc107",
-                backgroundColor: "transparent",
-                textDecoration: "none",
-                fontWeight: "600",
-                textAlign: "center",
-                cursor: "pointer",
-                transition: "all 0.3s ease",
-              }}
-              onMouseEnter={(e) => {
-                e.target.style.backgroundColor = "#ffc107";
-                e.target.style.color = "#000";
-              }}
-              onMouseLeave={(e) => {
-                e.target.style.backgroundColor = "transparent";
-                e.target.style.color = "#ffc107";
-              }}
+              className="vp-try-it-btn"
             >
-              Try it Yourself
+              🚀 Try it Yourself
             </Link>
           </div>
         </div>

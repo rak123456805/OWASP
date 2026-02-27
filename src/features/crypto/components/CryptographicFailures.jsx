@@ -50,13 +50,13 @@ const CryptographicFailures = () => {
           <div className="vp-overview-grid">
             <div className="vp-overview-content">
               <p>
-                Cryptographic failures occur when sensitive data is not properly protected through encryption, 
-                leading to exposure of passwords, credit card numbers, health records, and other confidential information. 
+                Cryptographic failures occur when sensitive data is not properly protected through encryption,
+                leading to exposure of passwords, credit card numbers, health records, and other confidential information.
                 This category focuses on failures related to cryptography rather than the cryptographic vulnerabilities themselves.
               </p>
               <p>
-                The first thing is to determine the protection needs of data in transit and at rest. For example, 
-                passwords, credit card numbers, health records, personal information, and business secrets require extra protection, 
+                The first thing is to determine the protection needs of data in transit and at rest. For example,
+                passwords, credit card numbers, health records, personal information, and business secrets require extra protection,
                 mainly if that data falls under privacy laws.
               </p>
               <div className="vp-impact-box">
@@ -312,13 +312,13 @@ app.use(helmet());`}</pre>
             </div>
           </div>
         </div>
-        <div className="vp-button-container">
+        <div className="vp-try-btn-wrapper">
           <button
             type="button"
-            className="try-it-btn"
+            className="vp-try-it-btn"
             onClick={() => navigate("/cryptographic-failures/demo")}
           >
-            Try it Yourself
+            🚀 Try it Yourself
           </button>
         </div>
       </section>

@@ -45,12 +45,12 @@ const Injection = () => {
           <div className="vp-overview-grid">
             <div className="vp-overview-content">
               <p>
-                Injection flaws occur when untrusted data is sent to an interpreter as part of a command or query. 
-                Attackers can trick the interpreter into executing unintended commands or accessing data without authorization. 
+                Injection flaws occur when untrusted data is sent to an interpreter as part of a command or query.
+                Attackers can trick the interpreter into executing unintended commands or accessing data without authorization.
                 Injection vulnerabilities are particularly dangerous as they can lead to complete system compromise.
               </p>
               <p>
-                The most common injection is SQL injection, but interpreters for LDAP, XPath, NoSQL queries, OS commands, 
+                The most common injection is SQL injection, but interpreters for LDAP, XPath, NoSQL queries, OS commands,
                 XML parsers, SMTP headers, expression languages, and ORM queries are all susceptible to injection attacks.
               </p>
               <div className="vp-impact-box">
@@ -306,14 +306,16 @@ db.execute('sp_getUserByUsername', [username]);`}</pre>
           </div>
         </div>
 
-        {/* ⭐ Updated Button → Link to Injection Sandbox */}
-        <button
-          type="button"
-          className="btn btn-outline-warning"
-          onClick={() => navigate('/injection-sandbox')}
-        >
-          Try it Yourself
-        </button>
+        {/* Standardized Try it Yourself Button */}
+        <div className="vp-try-btn-wrapper">
+          <button
+            type="button"
+            className="vp-try-it-btn"
+            onClick={() => navigate('/injection-sandbox')}
+          >
+            🚀 Try it Yourself
+          </button>
+        </div>
       </section>
 
       {/* Resources */}

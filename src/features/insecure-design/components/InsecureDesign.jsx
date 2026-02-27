@@ -13,7 +13,7 @@ const InsecureDesign = () => {
             <div className="vp-badge">A04:2021</div>
             <h1 className="vp-title">Insecure Design</h1>
             <p className="vp-subtitle">
-              Missing or ineffective control design that fails to prevent security flaws before implementation. 
+              Missing or ineffective control design that fails to prevent security flaws before implementation.
               This represents different weaknesses from insecure implementation.
             </p>
             <div className="vp-stats">
@@ -46,13 +46,13 @@ const InsecureDesign = () => {
           <div className="vp-overview-grid">
             <div className="vp-overview-content">
               <p>
-                Insecure design refers to security weaknesses that are "built-in" to the application architecture 
-                and design, making them difficult to fix later through patches or configuration changes. Unlike 
+                Insecure design refers to security weaknesses that are "built-in" to the application architecture
+                and design, making them difficult to fix later through patches or configuration changes. Unlike
                 implementation bugs, these flaws exist because security was not considered during the design phase.
               </p>
               <p>
-                This category focuses on risks related to design and architectural flaws, with a call for more use 
-                of threat modeling, secure design patterns, and reference architectures. Insecure design cannot be 
+                This category focuses on risks related to design and architectural flaws, with a call for more use
+                of threat modeling, secure design patterns, and reference architectures. Insecure design cannot be
                 fixed by perfect implementation.
               </p>
               <div className="vp-impact-box">
@@ -321,14 +321,16 @@ class SecureDataStorage {
           </div>
         </div>
 
-        {/* UPDATED BUTTON WITH SANDBOX LINK */}
-        <button
-          type="button"
-          className="btn btn-outline-warning"
-          onClick={() => navigate('/insecure-design/sandbox')}
-        >
-          Try it Yourself
-        </button>
+        {/* Standardized Try it Yourself Button */}
+        <div className="vp-try-btn-wrapper">
+          <button
+            type="button"
+            className="vp-try-it-btn"
+            onClick={() => navigate('/insecure-design/sandbox')}
+          >
+            🚀 Try it Yourself
+          </button>
+        </div>
       </section>
 
       {/* Resources */}
