@@ -16,6 +16,7 @@
     "body-parser": "^1.20.2",
     "bootstrap": "^5.3.8",
     "cors": "^2.8.5",
+    "dotenv": "^16.4.5",
     "express": "^4.21.2",
     "express-list-endpoints": "^7.1.1",
     "http-proxy-middleware": "^3.0.5",
@@ -35,7 +36,7 @@
     "start": "node render-server.js",
     "build": "vite build",
     "preview": "vite preview",
-    "server": "concurrently \"node server/broken-access-control/server.js\" \"node server/cryptographic-failures/server.js\" \"node server/injection/server.js\" \"node server/insecure-design/server.js\" \"node server/security-logging-failures/server.js\" \"node server/security-misconfiguration/server.js\" \"node server/server-side-request-forgery/server.js\" \"node server/software-data-integrity/server.js\" \"node server/vulnerable-components/server.js\""
+    "server": "concurrently \"node server/broken-access-control/server.js\" \"node server/cryptographic-failures/server.js\" \"node server/injection/server.js\" \"node server/insecure-design/server.js\" \"node server/security-logging-failures/server.js\" \"node server/security-misconfiguration/server.js\" \"node server-side-request-forgery/server.js\" \"node server/software-data-integrity/server.js\" \"node server/vulnerable-components/server.js\" \"node server/chatbot/server.js\""
   },
   "eslintConfig": {
     "extends": [

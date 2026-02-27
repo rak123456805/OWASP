@@ -8,8 +8,8 @@ COPY package*.json ./
 COPY server/package*.json ./server/
 
 # Install dependencies (ignoring scripts to avoid dev-only issues)
-RUN npm install --include=dev
-RUN cd server && npm install
+RUN npm install --include=dev --legacy-peer-deps
+RUN cd server && npm install --legacy-peer-deps
 
 # Copy source
 COPY . .
