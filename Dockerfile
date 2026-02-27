@@ -8,7 +8,7 @@ COPY package*.json ./
 # Root package.json now includes all required dependencies for gateway and chatbot
 
 # Install dependencies
-RUN npm install --include=dev
+RUN npm install --include=dev --legacy-peer-deps
 
 # Copy source
 COPY . .
