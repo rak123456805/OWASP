@@ -54,6 +54,7 @@ All vulnerabilities are active and centralized. You can start all of them with a
 | **A08**  | Software & Data Integrity Failures         | 5400         | ✅ Active   |
 | **A09**  | Security Logging & Monitoring Failures     | 5600         | ✅ Active   |
 | **A10**  | Server-Side Request Forgery (SSRF)         | 5500         | ✅ Active   |
+| **AI**   | XploitSim Assistant (LangGraph Bot)        | 5700         | ✅ Active   |
 
 ---
 

@@ -32,6 +32,10 @@ import SoftwareDataIntegrity from './features/software-integrity/components/Soft
 import SecurityLoggingFailures from './features/logging/components/SecurityLoggingFailures';
 import ServerSideRequestForgery from './features/ssrf/components/ServerSideRequestForgery';
 
+import SoftwareSupplyChainFailures from './features/software-supply-chain-failures/components/SoftwareSupplyChainFailures';
+import MishandlingExceptionalConditions from './features/mishandling-exceptional-conditions/components/MishandlingExceptionalConditions';
+import Chatbot from './features/chatbot/components/Chatbot';
+
 function App() {
   return (
     <Router>
@@ -62,6 +66,8 @@ function App() {
           <Route path="/software-data-integrity" element={<SoftwareDataIntegrity />} />
           <Route path="/security-logging-failures" element={<SecurityLoggingFailures />} />
           <Route path="/server-side-request-forgery" element={<ServerSideRequestForgery />} />
+          <Route path="/software-supply-chain-failures" element={<SoftwareSupplyChainFailures />} />
+          <Route path="/mishandling-exceptional-conditions" element={<MishandlingExceptionalConditions />} />
 
           {/* Other Sandbox Routes */}
           <Route path="/sandbox/authentication-failures" element={<AuthenticationSandbox />} />
@@ -71,6 +77,7 @@ function App() {
           <Route path="*" element={<NotFoundPage />} />
         </Route>
       </Routes>
+      <Chatbot />
     </Router>
   );
 }
