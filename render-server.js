@@ -21,6 +21,7 @@ const microservices = [
     { name: 'server-side-request-forgery', path: 'server/server-side-request-forgery/server.js', port: 5500 },
     { name: 'software-data-integrity', path: 'server/software-data-integrity/server.js', port: 5400 },
     { name: 'vulnerable-components', path: 'server/vulnerable-components/server.js', port: 5002 },
+    { name: 'chatbot', path: 'server/chatbot/server.js', port: 5700 },
 ];
 
 // 1. Start all microservices as child processes

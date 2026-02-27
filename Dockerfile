@@ -5,11 +5,10 @@ WORKDIR /app
 
 # Copy package files
 COPY package*.json ./
-COPY server/package*.json ./server/
+# Root package.json now includes all required dependencies for gateway and chatbot
 
-# Install dependencies (ignoring scripts to avoid dev-only issues)
+# Install dependencies
 RUN npm install --include=dev
-RUN cd server && npm install
 
 # Copy source
 COPY . .

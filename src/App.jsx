@@ -34,6 +34,7 @@ import ServerSideRequestForgery from './features/ssrf/components/ServerSideReque
 
 import SoftwareSupplyChainFailures from './features/software-supply-chain-failures/components/SoftwareSupplyChainFailures';
 import MishandlingExceptionalConditions from './features/mishandling-exceptional-conditions/components/MishandlingExceptionalConditions';
+import Chatbot from './features/chatbot/components/Chatbot';
 
 function App() {
   return (
@@ -76,6 +77,7 @@ function App() {
           <Route path="*" element={<NotFoundPage />} />
         </Route>
       </Routes>
+      <Chatbot />
     </Router>
   );
 }
