@@ -61,6 +61,7 @@
     ]
   },
   "devDependencies": {
-    "concurrently": "^9.2.1"
+    "concurrently": "^9.2.1",
+    "vite": "^6.0.0"
   }
 }
