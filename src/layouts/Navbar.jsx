@@ -66,8 +66,8 @@ export default function Navbar() {
           <h3>OWASP Top 10</h3>
           <ul className="vulnerability-list">
             <li>
-              <a 
-                href="/broken-access-control" 
+              <a
+                href="/broken-access-control"
                 className="nav-link"
                 onClick={(e) => {
                   e.preventDefault();
@@ -79,8 +79,8 @@ export default function Navbar() {
               </a>
             </li>
             <li>
-              <a 
-                href="/cryptographic-failures" 
+              <a
+                href="/cryptographic-failures"
                 className="nav-link"
                 onClick={(e) => {
                   e.preventDefault();
@@ -92,8 +92,8 @@ export default function Navbar() {
               </a>
             </li>
             <li>
-              <a 
-                href="/injection" 
+              <a
+                href="/injection"
                 className="nav-link"
                 onClick={(e) => {
                   e.preventDefault();
@@ -105,8 +105,8 @@ export default function Navbar() {
               </a>
             </li>
             <li>
-              <a 
-                href="/insecure-design" 
+              <a
+                href="/insecure-design"
                 className="nav-link"
                 onClick={(e) => {
                   e.preventDefault();
@@ -118,8 +118,8 @@ export default function Navbar() {
               </a>
             </li>
             <li>
-              <a 
-                href="/security-misconfiguration" 
+              <a
+                href="/security-misconfiguration"
                 className="nav-link"
                 onClick={(e) => {
                   e.preventDefault();
@@ -131,8 +131,8 @@ export default function Navbar() {
               </a>
             </li>
             <li>
-              <a 
-                href="/vulnerable-components" 
+              <a
+                href="/vulnerable-components"
                 className="nav-link"
                 onClick={(e) => {
                   e.preventDefault();
@@ -144,8 +144,8 @@ export default function Navbar() {
               </a>
             </li>
             <li>
-              <a 
-                href="/authentication-failures" 
+              <a
+                href="/authentication-failures"
                 className="nav-link"
                 onClick={(e) => {
                   e.preventDefault();
@@ -157,8 +157,8 @@ export default function Navbar() {
               </a>
             </li>
             <li>
-              <a 
-                href="/software-data-integrity" 
+              <a
+                href="/software-data-integrity"
                 className="nav-link"
                 onClick={(e) => {
                   e.preventDefault();
@@ -170,8 +170,8 @@ export default function Navbar() {
               </a>
             </li>
             <li>
-              <a 
-                href="/security-logging-failures" 
+              <a
+                href="/security-logging-failures"
                 className="nav-link"
                 onClick={(e) => {
                   e.preventDefault();
@@ -183,8 +183,8 @@ export default function Navbar() {
               </a>
             </li>
             <li>
-              <a 
-                href="/server-side-request-forgery" 
+              <a
+                href="/server-side-request-forgery"
                 className="nav-link"
                 onClick={(e) => {
                   e.preventDefault();
@@ -195,16 +195,42 @@ export default function Navbar() {
                 Server-Side Request Forgery
               </a>
             </li>
+            <li>
+              <a
+                href="/software-supply-chain-failures"
+                className="nav-link"
+                onClick={(e) => {
+                  e.preventDefault();
+                  navigateToPage('/software-supply-chain-failures');
+                }}
+              >
+                <span className="vuln-number" style={{ fontSize: '0.6rem' }}>NEW</span>
+                Software Supply Chain Failures
+              </a>
+            </li>
+            <li>
+              <a
+                href="/mishandling-exceptional-conditions"
+                className="nav-link"
+                onClick={(e) => {
+                  e.preventDefault();
+                  navigateToPage('/mishandling-exceptional-conditions');
+                }}
+              >
+                <span className="vuln-number" style={{ fontSize: '0.6rem' }}>NEW</span>
+                Mishandling of Exceptional Conditions
+              </a>
+            </li>
           </ul>
         </div>
       </div>
 
       {/* Overlay for mobile - RENDERED AFTER sidebar so it's underneath */}
-      <div 
+      <div
         className={`sidebar-overlay ${isSidebarOpen ? 'open' : ''}`}
         onClick={closeSidebar}
       />
-      
+
       {/* Main Navbar */}
       <div className='navbar'>
         <div className="align-left">
@@ -212,7 +238,7 @@ export default function Navbar() {
           <button className="menu-btn" onClick={toggleSidebar}>
             {isSidebarOpen ? '✕' : '☰'}
           </button>
-          
+
           {/* Logo */}
           <div className='logo' onClick={() => navigate('/')} style={{ cursor: 'pointer' }}>
             <img src="/logo32.png" alt="Logo" />
@@ -222,8 +248,8 @@ export default function Navbar() {
         {/* Desktop Navigation Links */}
         <ul className='desktop-nav-links'>
           <li>
-            <a 
-              href="/" 
+            <a
+              href="/"
               onClick={(e) => {
                 e.preventDefault();
                 navigate('/');
@@ -234,8 +260,8 @@ export default function Navbar() {
           </li>
           <li><a href="https://owasp.org/Top10/" target="_blank" rel="noopener noreferrer">Study Material</a></li>
           <li>
-            <a 
-              href="/about" 
+            <a
+              href="/about"
               onClick={(e) => {
                 e.preventDefault();
                 navigate('/about');
@@ -245,8 +271,8 @@ export default function Navbar() {
             </a>
           </li>
           <li>
-            <a 
-              href="#contact" 
+            <a
+              href="#contact"
               onClick={(e) => {
                 e.preventDefault();
                 handleLinkClick('contact');

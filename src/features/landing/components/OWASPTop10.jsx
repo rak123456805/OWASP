@@ -75,9 +75,28 @@ const OWASPTop10 = () => {
     }
   ];
 
+  const newVulnerabilities2025 = [
+    {
+      id: "3",
+      name: "Software Supply Chain Failures",
+      description: "Expands on vulnerable components to cover the entire software ecosystem, including dependencies, build systems, and distribution.",
+      link: "/software-supply-chain-failures",
+      image: "./SSCF.png",
+      isNew: true,
+    },
+    {
+      id: "10",
+      name: "Mishandling of Exceptional Conditions",
+      description: "Secure error handling, logical flaws, and insecure failure states leading to sensitive data exposure or denial-of-service.",
+      link: "/mishandling-exceptional-conditions",
+      image: "/MofExcepCond.png",
+      isNew: true,
+    }
+  ];
+
   const handleLearnMoreClick = (e, link) => {
     e.preventDefault();
-    
+
     // Navigate to the actual page
     window.location.href = link;
   };
@@ -149,6 +168,18 @@ const OWASPTop10 = () => {
         <div className={styles.row}>
           {vulnerabilities.slice(5, 10).map((vuln) => (
             <VulnerabilityCard key={vuln.id} vulnerability={vuln} />
+          ))}
+        </div>
+
+        <div className={styles.newSectionHeader}>
+          <h2>New in OWASP Draft 2025</h2>
+          <div className={styles.divider}></div>
+        </div>
+
+        {/* Third Row - New 2025 Items */}
+        <div className={`${styles.row} ${styles.newRow}`}>
+          {newVulnerabilities2025.map((vuln, index) => (
+            <VulnerabilityCard key={`new-${index}`} vulnerability={vuln} />
           ))}
         </div>
       </div>
