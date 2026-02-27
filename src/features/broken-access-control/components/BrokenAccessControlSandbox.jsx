@@ -86,6 +86,18 @@ const BrokenAccessControlSandbox = () => {
         </p>
       </div>
 
+      <div style={{ maxWidth: 1000, margin: '0 auto 2rem auto', padding: '1.5rem', background: 'rgba(255,205,88,0.05)', borderRadius: '12px', border: '1px solid rgba(255,205,88,0.2)' }}>
+        <h3 style={{ color: '#ffcd58', marginTop: 0 }}>🎯 Your Mission</h3>
+        <p style={{ fontSize: '15px', color: '#d1d5db', marginBottom: '1rem' }}>
+          Bypass access controls and view data that shouldn't be visible to you.
+        </p>
+        <ol style={{ fontSize: '14px', color: '#d1d5db', paddingLeft: '1.2rem', lineHeight: '1.6' }}>
+          <li><strong>Authenticate:</strong> Click 🔐 Login as Alice. She is a low-privileged user.</li>
+          <li><strong>Unauthorized Access:</strong> Click 📄 Try accessing another user's document. Note the result—if Alice can see Bob's data, the access control is <i>broken</i>.</li>
+          <li><strong>Compare Roles:</strong> Restart the demo and login as Bob. Try accessing Alice's document to see if the vulnerability is consistent.</li>
+        </ol>
+      </div>
+
       <div className="sandbox-controls">
         <h2>🔧 Actions</h2>
 
@@ -150,7 +162,7 @@ const BrokenAccessControlSandbox = () => {
           ⬅️ Back to Overview
         </button>
       </div>
-    </div>
+    </div >
   );
 };
 

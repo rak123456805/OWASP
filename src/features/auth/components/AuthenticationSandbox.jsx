@@ -1,7 +1,7 @@
 import React, { useState, useRef, useEffect } from 'react';
 import '../../../index.css';
 import '../../vulnerable-components/assets/VulnerabilityPage.css';
-import '../../broken-access-control/assets/BrokenAccessControl.css'; 
+import '../../broken-access-control/assets/BrokenAccessControl.css';
 import '../assets/AuthenticationSandbox.css';
 // reuse bac-hero styles
 
@@ -25,7 +25,7 @@ export default function AuthenticationSandbox() {
         const parsed = JSON.parse(raw);
         return parsed.map(u => ({ attempts: 0, lockedUntil: 0, ...u }));
       }
-    } catch {}
+    } catch { }
     return DEFAULT_USERS.slice();
   });
 
@@ -33,7 +33,7 @@ export default function AuthenticationSandbox() {
     try {
       const raw = localStorage.getItem(LOCAL_LOG_KEY);
       if (raw) return JSON.parse(raw);
-    } catch {}
+    } catch { }
     return [];
   });
 
@@ -58,13 +58,13 @@ export default function AuthenticationSandbox() {
   useEffect(() => {
     try {
       localStorage.setItem(LOCAL_USERS_KEY, JSON.stringify(users));
-    } catch {}
+    } catch { }
   }, [users]);
 
   useEffect(() => {
     try {
       localStorage.setItem(LOCAL_LOG_KEY, JSON.stringify(attackLog));
-    } catch {}
+    } catch { }
   }, [attackLog]);
 
   // Prevent page jump on log updates — only auto-scroll console if near bottom
@@ -237,8 +237,20 @@ export default function AuthenticationSandbox() {
         </div>
       </section>
 
-      <main className="vp-container" style={{ display: 'flex', justifyContent: 'center' }}>
-        <div className="vp-grid" style={{ maxWidth: 1100, gap: 16 }}>
+      <main className="vp-container">
+        <div style={{ maxWidth: 1100, margin: '0 auto 2rem auto', padding: '1.5rem', background: 'rgba(255,205,88,0.05)', borderRadius: '12px', border: '1px solid rgba(255,205,88,0.2)' }}>
+          <h3 style={{ color: '#ffcd58', marginTop: 0 }}>🎯 Your Mission</h3>
+          <p style={{ fontSize: '15px', color: '#d1d5db', marginBottom: '1rem' }}>
+            Test the strengths and weaknesses of this authentication system.
+          </p>
+          <ol style={{ fontSize: '14px', color: '#d1d5db', paddingLeft: '1.2rem', lineHeight: '1.6' }}>
+            <li><strong>Manual Brute Force:</strong> Try logging in as <code>admin</code> with several wrong passwords. Notice how the "Remaining Attempts" counter decreases.</li>
+            <li><strong>Observe Lockout:</strong> After 5 failed attempts, the account will be 🔒 LOCKED for 60 seconds. Try to log in again while locked to see the system's defense.</li>
+            <li><strong>Automated Attack:</strong> Click "Start Credential Stuffing". This simulates an attacker trying a list of common passwords across many accounts. Watch the Attack Log to see which accounts are compromised.</li>
+          </ol>
+        </div>
+
+        <div className="vp-grid" style={{ maxWidth: 1100, gap: 16, margin: '0 auto' }}>
           {/* LEFT PANEL */}
           <div className="vp-card" style={{ textAlign: 'center' }}>
             <h3>Login / Register</h3>

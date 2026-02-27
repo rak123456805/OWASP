@@ -29,10 +29,14 @@ import SecurityMisconfigurationSandbox from './features/misconfiguration/compone
 import VulnerableComponents from './features/vulnerable-components/components/VulnerableComponents';
 
 import SoftwareDataIntegrity from './features/software-integrity/components/SoftwareDataIntegrity';
+import SoftwareIntegritySandbox from './features/software-integrity/components/SoftwareIntegritySandbox';
 import SecurityLoggingFailures from './features/logging/components/SecurityLoggingFailures';
+import SecurityLoggingFailuresSandbox from './features/logging/components/SecurityLoggingFailuresSandbox';
 import ServerSideRequestForgery from './features/ssrf/components/ServerSideRequestForgery';
+import ServerSideRequestForgerySandbox from './features/ssrf/components/ServerSideRequestForgerySandbox';
 
 import SoftwareSupplyChainFailures from './features/software-supply-chain-failures/components/SoftwareSupplyChainFailures';
+import VulnerableComponentsSandbox from './features/vulnerable-components/components/VulnerableComponentsSandbox';
 import MishandlingExceptionalConditions from './features/mishandling-exceptional-conditions/components/MishandlingExceptionalConditions';
 import Chatbot from './features/chatbot/components/Chatbot';
 
@@ -62,10 +66,14 @@ function App() {
           <Route path="/security-misconfiguration/sandbox" element={<SecurityMisconfigurationSandbox />} />
 
           <Route path="/vulnerable-components" element={<VulnerableComponents />} />
+          <Route path="/vulnerable-components/sandbox" element={<VulnerableComponentsSandbox />} />
           <Route path="/authentication-failures" element={<AuthenticationFailures />} />
           <Route path="/software-data-integrity" element={<SoftwareDataIntegrity />} />
+          <Route path="/software-data-integrity/sandbox" element={<SoftwareIntegritySandbox />} />
           <Route path="/security-logging-failures" element={<SecurityLoggingFailures />} />
+          <Route path="/security-logging-failures/sandbox" element={<SecurityLoggingFailuresSandbox />} />
           <Route path="/server-side-request-forgery" element={<ServerSideRequestForgery />} />
+          <Route path="/server-side-request-forgery/sandbox" element={<ServerSideRequestForgerySandbox />} />
           <Route path="/software-supply-chain-failures" element={<SoftwareSupplyChainFailures />} />
           <Route path="/mishandling-exceptional-conditions" element={<MishandlingExceptionalConditions />} />
 

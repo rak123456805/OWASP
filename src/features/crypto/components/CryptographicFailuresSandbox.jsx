@@ -194,23 +194,24 @@ export default function CryptographicFailuresSandbox() {
       <div
         className="vp-section"
         style={{
-          maxWidth: "1500px",
-          marginTop: "2rem",
-          marginLeft: "4rem",
-          marginRight: "4rem",
-          background: "#1e293b",
-          color: "#f1f5f9",
-          padding: "2rem",
-          borderRadius: "8px",
-          boxShadow: "0 2px 8px rgba(0,0,0,0.15)",
+          maxWidth: '1200px',
+          margin: '2rem auto 0 auto',
+          background: 'rgba(255,205,88,0.05)',
+          color: '#f1f5f9',
+          padding: '1.5rem',
+          borderRadius: '12px',
+          border: '1px solid rgba(255,205,88,0.2)',
         }}
       >
-        <h1>Steps to Run</h1>
-        <ol>
-          <li>Enter your text (e.g., a password or secret) below.</li>
-          <li>Run actions such as Hash, Encrypt, or Decrypt.</li>
-          <li>Try Login, Verify JWT, or Secret Storage functions.</li>
-          <li>See backend responses and explanations on the right.</li>
+        <h3 style={{ color: '#ffcd58', marginTop: 0 }}>🎯 Your Mission</h3>
+        <p style={{ fontSize: '15px', color: '#d1d5db', marginBottom: '1rem' }}>
+          Explore how weak cryptographic implementations can be bypassed or predicted.
+        </p>
+        <ol style={{ fontSize: '14px', color: '#d1d5db', paddingLeft: '1.2rem', lineHeight: '1.6' }}>
+          <li><strong>Test Weak Hashing:</strong> Enter a password and click <b>Hash (MD5)</b>. MD5 is broken and easily reversible via rainbow tables.</li>
+          <li><strong>Static Key Encryption:</strong> Click <b>Encrypt (static)</b>. Note the ciphertext. Change one letter in your input and encrypt again. Notice how predictable the output is when using static keys.</li>
+          <li><strong>JWT Exploitation:</strong> Click <b>Login (Alice)</b> to get a token, then <b>Verify JWT</b>. In a real attack, you could try to forge this JWT if the secret is weak.</li>
+          <li><strong>Insecure Storage:</strong> Click <b>Store Secret</b> then <b>Reveal Secret</b>. Observe how the "stored" data is easily recoverable.</li>
         </ol>
       </div>
 

@@ -11,41 +11,79 @@ export default function InsecureDesignSandbox() {
   const [errorRes, setErrorRes] = useState(null);
   const [featureName, setFeatureName] = useState("");
   const [featureValue, setFeatureValue] = useState(true);
+  const [statusMsg, setStatusMsg] = useState(null);
+
+  function showStatus(msg, type = "info") {
+    setStatusMsg({ text: msg, type });
+    setTimeout(() => setStatusMsg(null), 4000);
+  }
 
   async function fetchVulnerableConfig() {
-    const res = await fetch(`${API_BASE}/vulnerable/config`);
-    setConfigVuln(await res.json());
+    try {
+      const res = await fetch(`${API_BASE}/vulnerable/config`);
+      const data = await res.json();
+      setConfigVuln(data);
+      showStatus("⚠️ CRITICAL LEAK: Full system configuration exposed!", "danger");
+    } catch (err) {
+      showStatus("Failed to fetch vulnerable config", "danger");
+    }
   }
 
   async function fetchSafeConfig() {
-    const res = await fetch(`${API_BASE}/safe/config`);
-    setConfigSafe(await res.json());
+    try {
+      const res = await fetch(`${API_BASE}/safe/config`);
+      const data = await res.json();
+      setConfigSafe(data);
+      showStatus("✅ Safe config fetched. No secrets exposed.", "success");
+    } catch (err) {
+      showStatus("Failed to fetch safe config", "danger");
+    }
   }
 
   async function toggleVuln() {
-    const res = await fetch(`${API_BASE}/vulnerable/toggle-feature`, {
-      method: 'POST',
-      headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify({ feature: featureName, enabled: featureValue })
-    });
-    setToggleRes(await res.json());
+    if (!featureName) return showStatus("Enter a feature name first", "info");
+    try {
+      const res = await fetch(`${API_BASE}/vulnerable/toggle-feature`, {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ feature: featureName, enabled: featureValue })
+      });
+      const data = await res.json();
+      setToggleRes(data);
+      showStatus(`⚡ Feature '${featureName}' toggled without authentication!`, "warning");
+    } catch (err) {
+      showStatus("Action failed", "danger");
+    }
   }
 
   async function toggleSafe() {
-    const res = await fetch(`${API_BASE}/safe/toggle-feature`, {
-      method: 'POST',
-      headers: {
-        'Content-Type': 'application/json',
-        'x-admin-token': 'let-me-admin'
-      },
-      body: JSON.stringify({ feature: featureName, enabled: featureValue })
-    });
-    setToggleRes(await res.json());
+    if (!featureName) return showStatus("Enter a feature name first", "info");
+    try {
+      const res = await fetch(`${API_BASE}/safe/toggle-feature`, {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+          'x-admin-token': 'let-me-admin'
+        },
+        body: JSON.stringify({ feature: featureName, enabled: featureValue })
+      });
+      const data = await res.json();
+      setToggleRes(data);
+      showStatus(`🔒 Feature '${featureName}' toggled securely (admin token used).`, "success");
+    } catch (err) {
+      showStatus("Authentication required for this action", "danger");
+    }
   }
 
   async function triggerError() {
-    const res = await fetch(`${API_BASE}/vulnerable/error`);
-    setErrorRes(await res.json());
+    try {
+      const res = await fetch(`${API_BASE}/vulnerable/error`);
+      const data = await res.json();
+      setErrorRes(data);
+      showStatus("🚨 Verbose Error Triggered: Check results for stack trace leak.", "danger");
+    } catch (err) {
+      showStatus("Error trigger failed", "danger");
+    }
   }
 
   return (
@@ -55,10 +93,36 @@ export default function InsecureDesignSandbox() {
         <div className={styles.badge}>Insecure Design</div>
         <h1 className={styles.title}>Insecure Design Sandbox</h1>
         <p className={styles.lead}>
-          Explore insecure design patterns: exposed configuration, unauthenticated feature toggles,
-          and verbose error leaks.
+          Explore how poor design choices lead to secret leaks and unauthorized control.
         </p>
       </div>
+
+      <div style={{ maxWidth: 1200, margin: '2rem auto', padding: '1.5rem', background: 'rgba(255,205,88,0.05)', borderRadius: '12px', border: '1px solid rgba(255,205,88,0.2)' }}>
+        <h3 style={{ color: '#ffcd58', marginTop: 0 }}>🎯 Your Mission</h3>
+        <ol style={{ fontSize: '14px', color: '#d1d5db', paddingLeft: '1.2rem', lineHeight: '1.6' }}>
+          <li><strong>Extract Secrets:</strong> Click 🔓 Fetch Vulnerable Config. Notice the <b>Sensitive Data Leaked</b> banner. An attacker now has your DB passwords.</li>
+          <li><strong>Bypass Auth:</strong> Enter <code>debugMode</code> in the feature name and click ⚡ Toggle (Vulnerable). You just modified a system setting with no password!</li>
+          <li><strong>Leaking Internals:</strong> Click 🚨 Trigger Vulnerable Error. Look at the result to see how the server exposes its entire stack trace and internal paths.</li>
+        </ol>
+      </div>
+
+      {statusMsg && (
+        <div style={{
+          position: 'fixed',
+          top: '20px',
+          right: '20px',
+          padding: '1rem 2rem',
+          borderRadius: '8px',
+          background: statusMsg.type === 'danger' ? '#ff4d4d' : statusMsg.type === 'warning' ? '#ffcd58' : '#00ff88',
+          color: '#000',
+          fontWeight: 'bold',
+          zIndex: 1000,
+          boxShadow: '0 4px 12px rgba(0,0,0,0.5)',
+          animation: 'slideIn 0.3s ease-out'
+        }}>
+          {statusMsg.text}
+        </div>
+      )}
 
       {/* Controls Section */}
       <div className={styles.controls}>
@@ -76,7 +140,7 @@ export default function InsecureDesignSandbox() {
             className={styles.input}
             value={featureName}
             onChange={e => setFeatureName(e.target.value)}
-            placeholder="Feature name (e.g., debug)"
+            placeholder="Feature name (e.g., debugMode)"
           />
 
           <select
@@ -105,8 +169,8 @@ export default function InsecureDesignSandbox() {
 
       {/* Results Grid */}
       <div className={styles.results}>
-        <section className={styles.card}>
-          <h3>📉 Vulnerable Config</h3>
+        <section className={styles.card} style={{ border: configVuln ? '1px solid #ff4d4d' : '1px solid rgba(255,255,255,0.05)' }}>
+          <h3 style={{ color: configVuln ? '#ff4d4d' : 'inherit' }}>📉 Vulnerable Config {configVuln && "⚠️ LEAKED"}</h3>
           <pre className={styles.pre}>
             {configVuln ? JSON.stringify(configVuln, null, 2) : "No result yet. Fetch vulnerable config to see exposed secrets."}
           </pre>
@@ -120,52 +184,25 @@ export default function InsecureDesignSandbox() {
         </section>
 
         <section className={styles.card}>
-          <h3>⚡ Toggle Result / Errors</h3>
+          <h3>⚡ Action Results</h3>
           <pre className={styles.pre}>
             {toggleRes
               ? JSON.stringify(toggleRes, null, 2)
               : errorRes
                 ? JSON.stringify(errorRes, null, 2)
-                : "No result yet. Toggle features or trigger errors to see results."}
+                : "Results from toggles or errors will appear here."}
           </pre>
         </section>
       </div>
 
-      {/* Tips Section */}
       <div className={styles.tips}>
-        <h4>🎓 How to Use This Sandbox</h4>
+        <h4>💡 Learning Points</h4>
         <ul>
-          <li>
-            <b>Fetch Vulnerable Config:</b> Shows full system config including secrets,
-            simulating an insecure design flaw.
-          </li>
-          <li>
-            <b>Fetch Safe Config:</b> Shows only safe, non-sensitive values like flags.
-          </li>
-          <li>
-            <b>Toggle Features:</b>
-            Enter a feature name (e.g. <code>debug</code> or <code>featureXEnabled</code>)
-            then click:
-            <ul>
-              <li><b>Toggle (Vulnerable):</b> No authentication — anyone can modify system settings.</li>
-              <li><b>Toggle (Safe):</b> Requires an admin token.</li>
-            </ul>
-          </li>
-          <li>
-            <b>Trigger Vulnerable Error:</b> Generates an internal error and intentionally leaks the full
-            stack trace to demonstrate insecure error handling.
-          </li>
+          <li><strong>Principle of Least Privilege:</strong> Endpoints should only return what the user <i>specifically</i> needs.</li>
+          <li><strong>Design for Failure:</strong> When an error happens, the system shouldn't turn itself "inside out" by leaking code paths.</li>
+          <li><strong>Defense in Depth:</strong> Never rely on "security by obscurity" (like assuming people won't find your toggle endpoints).</li>
         </ul>
       </div>
-
-      <div className={styles.tips}>
-        <h4>💡 Learning Tips</h4>
-        <ul>
-          <li>Never expose secrets or config values in public endpoints.</li>
-          <li>Protect feature toggles with authentication and authorization.</li>
-          <li>Do not leak stack traces in production. Use internal logging only.</li>
-        </ul>
-      </div>
-    </div>
+    </div >
   );
 }

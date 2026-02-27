@@ -1,10 +1,9 @@
-import { useState } from "react";
-import ServerSideRequestForgeryDemo from "./ServerSideRequestForgeryDemo";
+import { useNavigate } from "react-router-dom";
 import React from "react";
 import "../../vulnerable-components/assets/VulnerabilityPage.css";
 
 const ServerSideRequestForgery = () => {
-  const [showDemo, setShowDemo] = useState(false);
+  const navigate = useNavigate();
 
   return (
     <div className="vulnerability-page">
@@ -409,16 +408,10 @@ app.use('/webhook', (req, res, next) => {
         <button
           type="button"
           className="btn btn-outline-warning"
-          onClick={() => setShowDemo(!showDemo)}
+          onClick={() => navigate("/server-side-request-forgery/sandbox")}
         >
-          {showDemo ? "Hide Demo" : "Try it Yourself"}
+          Try it Yourself
         </button>
-
-        {showDemo && (
-          <div style={{ marginTop: "20px" }}>
-            <ServerSideRequestForgeryDemo />
-          </div>
-        )}
       </section>
 
       {/* Resources */}

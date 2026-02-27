@@ -1,10 +1,9 @@
-import { useState } from "react";
-import SoftwareIntegrityDemo from "./SoftwareIntegrityDemo";
+import { useNavigate } from "react-router-dom";
 import React from "react";
 import "../../vulnerable-components/assets/VulnerabilityPage.css";
 
 const SoftwareDataIntegrity = () => {
-  const [showDemo, setShowDemo] = useState(false);
+  const navigate = useNavigate();
 
   return (
     <div className="vulnerability-page">
@@ -418,16 +417,10 @@ pipeline {
         <button
           type="button"
           className="btn btn-outline-warning"
-          onClick={() => setShowDemo(!showDemo)}
+          onClick={() => navigate("/software-data-integrity/sandbox")}
         >
-          {showDemo ? "Hide Demo" : "Try it Yourself"}
+          Try it Yourself
         </button>
-
-        {showDemo && (
-          <div style={{ marginTop: "20px" }}>
-            <SoftwareIntegrityDemo />
-          </div>
-        )}
       </section>
 
       {/* Resources */}

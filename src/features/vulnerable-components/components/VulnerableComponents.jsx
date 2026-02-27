@@ -1,10 +1,9 @@
-import VulnerableComponentsDemo from "./VulnerableComponentsDemo";
-import { useState } from "react";
+import { useNavigate } from "react-router-dom";
 import React from "react";
 import "../assets/VulnerabilityPage.css";
 
 const VulnerableComponents = () => {
-  const [showDemo, setShowDemo] = useState(false);
+  const navigate = useNavigate();
 
   return (
     <div className="vulnerability-page">
@@ -391,16 +390,10 @@ dependencies:
         <button
           type="button"
           className="btn btn-outline-warning"
-          onClick={() => setShowDemo(!showDemo)}
+          onClick={() => navigate("/vulnerable-components/sandbox")}
         >
-          {showDemo ? "Hide Demo" : "Try it Yourself"}
+          Try it Yourself
         </button>
-
-        {showDemo && (
-          <div style={{ marginTop: "20px" }}>
-            <VulnerableComponentsDemo />
-          </div>
-        )}
       </section>
 
       {/* Resources */}

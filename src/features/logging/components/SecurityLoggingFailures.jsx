@@ -1,10 +1,9 @@
-import { useState } from "react";
-import SecurityLoggingFailuresDemo from "./SecurityLoggingFailuresDemo";
+import { useNavigate } from "react-router-dom";
 import React from "react";
 import "../../vulnerable-components/assets/VulnerabilityPage.css";
 
 const SecurityLoggingFailures = () => {
-  const [showDemo, setShowDemo] = useState(false);
+  const navigate = useNavigate();
 
   return (
     <div className="vulnerability-page">
@@ -410,16 +409,10 @@ try {
         <button
           type="button"
           className="btn btn-outline-warning"
-          onClick={() => setShowDemo(!showDemo)}
+          onClick={() => navigate("/security-logging-failures/sandbox")}
         >
-          {showDemo ? "Hide Demo" : "Try it Yourself"}
+          Try it Yourself
         </button>
-
-        {showDemo && (
-          <div style={{ marginTop: "20px" }}>
-            <SecurityLoggingFailuresDemo />
-          </div>
-        )}
       </section>
 
       {/* Resources */}

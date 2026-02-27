@@ -82,6 +82,19 @@ export default function SecurityMisconfigurationSandbox() {
         </p>
       </div>
 
+      <div style={{ maxWidth: 1200, margin: '2rem auto', padding: '1.5rem', background: 'rgba(255,205,88,0.05)', borderRadius: '12px', border: '1px solid rgba(255,205,88,0.2)' }}>
+        <h3 style={{ color: '#ffcd58', marginTop: 0 }}>🎯 Your Mission</h3>
+        <p style={{ fontSize: '15px', color: '#d1d5db', marginBottom: '1rem' }}>
+          Enumerate system defaults and exploit overly permissive configurations.
+        </p>
+        <ol style={{ fontSize: '14px', color: '#d1d5db', paddingLeft: '1.2rem', lineHeight: '1.6' }}>
+          <li><strong>Default Credentials:</strong> Click 🔓 Fetch Vulnerable Defaults. See how easy it is to find administrative passwords when they aren't changed.</li>
+          <li><strong>Directory Listing:</strong> Click 📁 Fetch Vulnerable Files. Observe a full list of internal files—this should always be disabled.</li>
+          <li><strong>Broken CORS:</strong> Click 🌐 Check Vulnerable CORS. See if the server allows <i>any</i> domain (<code>*</code>) to access its data.</li>
+          <li><strong>Insecure Deletion:</strong> Click 🗑️ Delete File (Vulnerable). Notice how anyone can delete files without a token!</li>
+        </ol>
+      </div>
+
       {/* Controls */}
       <div className={styles.controls}>
         <div className={styles.row}>
@@ -227,6 +240,6 @@ export default function SecurityMisconfigurationSandbox() {
           <li>Avoid permissive CORS rules.</li>
         </ul>
       </div>
-    </div>
+    </div >
   );
 }

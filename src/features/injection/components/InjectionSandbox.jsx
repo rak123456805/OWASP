@@ -62,6 +62,18 @@ export default function InjectionSandbox() {
         </p>
       </div>
 
+      <div style={{ maxWidth: 1200, margin: '2rem auto', padding: '1.5rem', background: 'rgba(255,205,88,0.05)', borderRadius: '12px', border: '1px solid rgba(255,205,88,0.2)' }}>
+        <h3 style={{ color: '#ffcd58', marginTop: 0 }}>🎯 Your Mission</h3>
+        <p style={{ fontSize: '15px', color: '#d1d5db', marginBottom: '1rem' }}>
+          Bypass database queries and trigger script reflection.
+        </p>
+        <ol style={{ fontSize: '14px', color: '#d1d5db', paddingLeft: '1.2rem', lineHeight: '1.6' }}>
+          <li><strong>SQL Injection:</strong> Enter <code>%' OR '1'='1</code> and click 🚨 Test Vulnerable. You should see <i>all</i> users because the condition is always true.</li>
+          <li><strong>Prevention:</strong> Click 🛡️ Test Safe with the same payload. Notice how the query returns no results (or just the literally matched string) because it's properly parameterized.</li>
+          <li><strong>XSS Reflection:</strong> Enter <code>&lt;script&gt;alert('XSS')&lt;/script&gt;</code> and click 🔄 Test Echo. Observe how the input is reflected back. In a real browser, this could execute JavaScript.</li>
+        </ol>
+      </div>
+
       {/* Controls Section */}
       <div className={styles.controlsContainer}>
         <div className={styles.controls}>

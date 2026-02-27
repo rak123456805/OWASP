@@ -1,9 +1,2 @@
 === Logs Deleted by Attacker ===
-User performed an action
-[WEAK LOG] Login attempt: username=test, password=123456
-[WEAK LOG] Login attempt: username=test, password=123456
-[WEAK LOG] Login attempt: username=test, password=123456
-[WEAK LOG] Login attempt: username=test, password=123456
-User performed an action
-[WEAK LOG] Login attempt: username=test, password=123456
-User performed an action
+[WEAK LOG] Login attempt: username=test, password=password123
